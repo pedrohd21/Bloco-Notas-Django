@@ -3,5 +3,6 @@ from . import views
 
 
 urlpatterns = [
-    path(),
+    path('', views.conteudolista, name='conteudo-lista'),
+    path('conteudo/<int:id>', views.conteudoView, name='conteudo-views'),
 ]

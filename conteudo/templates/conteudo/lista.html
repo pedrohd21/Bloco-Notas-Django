@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Blocos {% endblock %}
+{% block conteudo %}
+    <ul class="conteudo-lista">
+        {% for conteudo in conteudos %}
+        <div class="bloco-conteudo">
+            <li class="conteudo-item">
+                <span><i class="fas fa-trash"></i></span>
+                <span><i class="fas fa-edit"></i></span>
+                <h4 class="titulo-centralizado"><a href="/conteudo/{{ conteudo.id }}">{{ conteudo.titulo }}</a></h4><br>
+                <pre class="cor">{{ conteudo.descricao }}</pre>
+            </li>
+        </div>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+
