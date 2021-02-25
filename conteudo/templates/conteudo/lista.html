@@ -12,7 +12,8 @@
         {% for conteudo in conteudos %}
         <div class="bloco-conteudo">
             <li class="conteudo-item">
-                <span><i class="fas fa-trash"></i></span>
+                
+                <a href="delete/{{conteudo.id}}"><span><i class="fas fa-trash"></i></span></a>
                 <a href="edit/{{conteudo.id}}"><span><i class="fas fa-edit"></i></span></a>
                 <h4 class="titulo-centralizado"><a href="/conteudo/{{ conteudo.id }}">{{ conteudo.titulo }}</a></h4><br>
                 <pre class="cor">{{ conteudo.descricao }}</pre>

@@ -18,11 +18,7 @@
     letter-spacing: 1px;
 }
 
-/* footer */
-.card-body{
-    background: #353a40;
-    color: white;
-}
+
 
 /* lista */
 .list-div{
@@ -69,4 +65,19 @@
 }
 .fas.fa-check{
     color: #3476e2;
+}
+
+
+/* messagens */
+ul.messages{
+    padding: 0;
+}
+ul.messages li{
+    list-style: none;
+}
+
+/* footer */
+.card-body{
+    background: #353a40;
+    color: white;
 }
