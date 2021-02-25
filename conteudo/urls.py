@@ -3,6 +3,8 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.conteudolista, name='conteudo-lista'),
+    path('', views.conteudoLista, name='conteudo-lista'),
     path('conteudo/<int:id>', views.conteudoView, name='conteudo-views'),
+    path('novobloco/', views.novoBloco, name='novo-bloco'),
+    path('edit/<int:id>', views.editBloco, name='edit-bloco'),
 ]

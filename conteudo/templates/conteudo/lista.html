@@ -2,18 +2,25 @@
 
 {% block titulo %} Blocos {% endblock %}
 {% block conteudo %}
+<div>
+    <a id='add-link' href="novobloco/">
+        <div class="col-2 add-div">
+            <i class="fas fa-plus"></i> Adicionar tarefa
+        </div>
+    </a>
     <ul class="conteudo-lista">
         {% for conteudo in conteudos %}
         <div class="bloco-conteudo">
             <li class="conteudo-item">
                 <span><i class="fas fa-trash"></i></span>
-                <span><i class="fas fa-edit"></i></span>
+                <a href="edit/{{conteudo.id}}"><span><i class="fas fa-edit"></i></span></a>
                 <h4 class="titulo-centralizado"><a href="/conteudo/{{ conteudo.id }}">{{ conteudo.titulo }}</a></h4><br>
                 <pre class="cor">{{ conteudo.descricao }}</pre>
             </li>
         </div>
         {% endfor %}
     </ul>
+</div>
 {% endblock %}
 
 
