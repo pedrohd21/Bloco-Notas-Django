@@ -8,4 +8,5 @@ urlpatterns = [
     path('novobloco/', views.novoBloco, name='novo-bloco'),
     path('edit/<int:id>', views.editBloco, name='edit-bloco'),
     path('delete/<int:id>', views.deleteBloco, name='delete-bloco'),
+    path('busca/', views.busca, name='busca'),
 ]

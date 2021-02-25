@@ -1,6 +1,5 @@
 .container-fluid{
     padding: 0;
-    background-color: #353a40;
 }
 .navbar{
     border-bottom: 1px solid #333;
@@ -35,18 +34,15 @@
 .conteudo-item{
     list-style: none;
     font-size: 20px;
-    border-bottom: 3px solid white;
-    background: #353a40;
-    color: white;
+    border-bottom: 3px solid #333;
+    /* background: #353a40; */
+    color: #333;
 }
 .conteudo-item.done{
     background-color: #ccc;
 }
 .cor{
-    color: #bebebe;
-}
-.titulo-centralizado{
-    text-align: center;
+    color: #333;
 }
 
 .fas.fa-trash, .fas.fa-edit, .fas.fa-check{
@@ -76,8 +72,29 @@ ul.messages li{
     list-style: none;
 }
 
+/* paginação */
+.pagination{
+    margin-bottom: 20px;
+}
+.step-links{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+.step-links .current{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
 /* footer */
 .card-body{
     background: #353a40;
     color: white;
+}
+
+
+/* login */
+
+.auth-card{
+    margin-bottom: 30px;
 }

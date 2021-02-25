@@ -3,6 +3,17 @@
 {% block titulo %} Blocos {% endblock %}
 {% block conteudo %}
 <div>
+    <form method="get" action="{% url 'busca' %}">
+        <div class="button">
+            <input type="search" 
+                    placeholder="Digite sua pesquisa" 
+                    id="search-input" 
+                    name="termo"
+                    value="{{ request.GET.termo }}">
+        </div>
+    </form>
+</div>
+<div>
     <a id='add-link' href="novobloco/">
         <div class="col-2 add-div">
             <i class="fas fa-plus"></i> Adicionar tarefa
@@ -20,6 +31,17 @@
             </li>
         </div>
         {% endfor %}
+    </ul>
+    <ul class="pagination" method="POST">
+        <li><a href="#"> << </a></li>
+        {% for pagina in conteudos.paginator.page_range %}
+            {% if conteudos.number == pagina  %}
+            <li><a class="page-ative" href="?p={{ pagina }}&termo={{ request.GET.termo}}">{{ pagina }} </a></li>
+            {% else %}
+            <li><a href="?p={{ pagina }}&termo={{ request.GET.termo}}">{{ pagina }} </a></li>
+            {% endif %}
+        {% endfor %}
+        <li><a href="#"> >> </a></li>
     </ul>
 </div>
 {% endblock %}
