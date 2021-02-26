@@ -3,22 +3,16 @@
 {% block titulo %} Blocos {% endblock %}
 {% block conteudo %}
 <div>
-    <form method="get" action="{% url 'busca' %}">
-        <div class="button">
-            <input type="search" 
-                    placeholder="Digite sua pesquisa" 
-                    id="search-input" 
-                    name="termo"
-                    value="{{ request.GET.termo }}">
-        </div>
-    </form>
-</div>
-<div>
     <a id='add-link' href="novobloco/">
         <div class="col-2 add-div">
-            <i class="fas fa-plus"></i> Adicionar tarefa
+            <i class="fas fa-plus"></i> Adicionar Bloco
         </div>
     </a>
+    <form method="GET" id="search-form">
+        <input class="form-control" type="text" id="search" name="search"
+           placeholder="Digite o nome da nota" value="{{ request.GET.search}}">
+        <i class="fas fa-search" id="search-btn"></i>
+     </form>
     <ul class="conteudo-lista">
         {% for conteudo in conteudos %}
         <div class="bloco-conteudo">
@@ -32,17 +26,21 @@
         </div>
         {% endfor %}
     </ul>
-    <ul class="pagination" method="POST">
-        <li><a href="#"> << </a></li>
-        {% for pagina in conteudos.paginator.page_range %}
-            {% if conteudos.number == pagina  %}
-            <li><a class="page-ative" href="?p={{ pagina }}&termo={{ request.GET.termo}}">{{ pagina }} </a></li>
-            {% else %}
-            <li><a href="?p={{ pagina }}&termo={{ request.GET.termo}}">{{ pagina }} </a></li>
-            {% endif %}
-        {% endfor %}
-        <li><a href="#"> >> </a></li>
-    </ul>
+    <div class="pagination">
+        <span class="step-links">
+          {% if conteudos.has_previous %} 
+                         <a href="?page={{ conteudos.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
+          {% endif %}
+                     
+           <span class="current"> 
+                         {{ conteudos.number }} de {{ conteudos.paginator.num_pages }}
+           </span>
+     
+           {% if conteudos.has_next %}
+                <a href="?page={{ conteudos.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
+           {% endif %}
+        </span>
+     </div>
 </div>
 {% endblock %}
 

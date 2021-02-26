@@ -11,10 +11,15 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def conteudoLista(request):
-    conteudos = Conteudo.objects.all().order_by('-data_criacao')
-    paginator = Paginator(conteudos, 10)
-    page = request.GET.get('p')
-    conteudos = paginator.get_page(page)
+    search = request.GET.get('search')
+    if search:
+        conteudos = Conteudo.objects.filter(titulo=search, user=request.user)
+    else:
+        conteudos_lista = Conteudo.objects.all().order_by('-data_criacao').filter(user=request.user)
+        paginator = Paginator(conteudos_lista, 10)
+        page = request.GET.get('page')
+        conteudos = paginator.get_page(page)
+
     return render(request, 'conteudo/lista.html', {'conteudos': conteudos})
 
 
@@ -28,10 +33,13 @@ def conteudoView(request, id):
 def novoBloco(request):
     if request.method == 'POST':
         form = ConteudoForm(request.POST)
+
         if form.is_valid():
             conteudo = form.save(commit=False)
             conteudo.done = 'doing'
+            conteudo.user = request.user
             conteudo.save()
+
             messages.info(request, 'Bloco criado com sucesso.')
             return redirect('/')
     else:
@@ -65,22 +73,3 @@ def deleteBloco(request, id):
     return redirect('/')
 
 
-@login_required
-def busca(request):
-    termo = request.GET.get('termo')
-
-    if termo is None or not termo:
-        raise http404()
-
-    campos = Concat('titulo', Value(''))
-
-    conteudo = Conteudo.objects.annotate(
-        titulo_completo=campos
-    ).filter(
-        Q(titulo_completo__icontains=termo)
-    )
-
-    paginator = Paginator(conteudo, 10)
-    page = request.GET.get('p')
-    conteudos = paginator.get_page(page)
-    return render(request, 'conteudo/busca.html', {'conteudos': conteudos})

@@ -13,6 +13,7 @@ class Conteudo(models.Model):
         max_length=5,
         choices=STATUS,
     )
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     data_criacao = models.DateTimeField(auto_now_add=True)
     data_update = models.DateTimeField(auto_now=True)
 

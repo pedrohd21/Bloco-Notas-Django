@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block titulo %} Novo Bloco {% endblock %}
 {% block conteudo %}
@@ -6,7 +7,7 @@
         <h1>Criar Novo Bloco</h1>
         <form method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ form|crispy }}
             <input type="submit" class="btn btn-success" value="Criar Bloco">
         </form>
     </div>
