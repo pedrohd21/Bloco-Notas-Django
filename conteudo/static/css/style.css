@@ -2,9 +2,6 @@
     padding: 0;
 }
 
-/* .container-fluid .row{
-    margin: 0;
-} */
 /* NavBar */
 
 .navbar{
@@ -20,44 +17,9 @@
     font-weight: bold;
 }
 .navbar-light .navbar-nav a.nav-link{
-    color: #333;
     letter-spacing: 1px;
 }
 
-/* dashboard*/
-
-.dashboard{
-    padding: 0;
-    width: 100%;
-    display: inline-block;
-}
-.dashboard h4{
-    font-size: 20px;
-}
-.dashboard span{
-    font-size: 40px;
-    display: block;
-    width: 100%;
-}
-.dashboard-box{
-    float: left;
-    background-color: #dfdfdf;
-    color: #fff;
-    padding: 20px;
-    box-sizing: border-box;
-    height: 130px;
-    width: 32%;
-    text-align: center;
-}
-#dashboard-lastdays{
-    background-color: #3476e2;
-}
-#dashboard-done{
-    background-color: #13c43f
-}
-#dashboard-doing{
-    background-color: #db1e47
-}
 /* Botão de Adicionar */
 
 #add-link{
@@ -65,7 +27,6 @@
 }
 
 .add-div{
-    background-color: #3476e2;
     cursor: pointer;
     display: inline-block;
     color: #fff;
@@ -79,55 +40,9 @@
     margin-left: 5px;
 }
 
-/* Search */
-
-/* .fas.fa-search{
-    position: absolute;
-    top: 12px;
-    right: 26px;
-    cursor: pointer;
-}
-
-.search-div{
-    padding: 0px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    display: inline-block;
-} */
-/* filter */
-.filter-div{
-    margin-bottom: 15px;
-    padding: 0;
-}
-
-#filter{
-    display: inline-block;
-    width: 200px;
-    margin-left: 10px;
-}
 /* Lista de tarefas */
 
-.list-div{
-    padding: 0;
-}
-
-.conteudo-list{
-    padding-left: 0;
-}
-
-.conteudo-item{
-    list-style: none;
-    font-size: 20px;
-    height: 50px;
-    padding: 0 15px;
-    padding-top: 10px;
-    border-bottom: 1px dashed #ccc;
-}
-.conteudo-item.done{
-    background-color: #ccc;
-}
-
-.fas.fa-trash, .fas.fa-edit, .fas.fa-check{
+.fas.fa-trash, .fas.fa-edit{
     cursor: pointer;
     margin: 5px;
     font-size: 20px;
@@ -135,28 +50,17 @@
 }
 
 .fas.fa-trash{
-    color: #db1e47;
+    color: #000000;
 }
 
 .fas.fa-edit{
-    color: #13c43f;
+    color: #000000;
 }
-.fas.fa-check{
-    color: #3476e2;
+.pre{
+    font-size: 16px;
 }
 
-/* Rodapé */
-footer{
-    background-color: #333;
-    height: 300px;
-    border-top: 2px solid #202020;
-}
-footer p{
-    color: #f5f5f5;
-    text-align: center;
-    top: 50%;
-    position: relative;
-}
+
 
 /* messages */
 
@@ -165,21 +69,6 @@ ul.messages{
 }
 ul.messages li{
     list-style: none;
-}
-
-/* Paginação */
-
-.pagination{
-    margin-bottom: 20px;
-}
-.step-links{
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-}
-.step-links .current{
-    margin-left: 5px;
-    margin-right: 5px;
 }
 
 /* login */
@@ -191,4 +80,28 @@ ul.messages li{
 .change-form-p{
     margin-top: 30px;
     text-align: center;
+}
+
+/* footer */
+footer{
+    color: white;
+}
+
+/* busca */
+.form-control-borderless {
+    border: none;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+.fa-search{
+    color: white;
+}
+
+.col-2{
+    margin: 10px 0;
+    border-radius: 5px;
 }

@@ -3,49 +3,47 @@
 {% block titulo %} Blocos {% endblock %}
 {% block conteudo %}
 <div>
-    <a id='add-link' href="novobloco/">
-        <div class="col-2 add-div">
+    <a id='add-link' href="novobloco/" >
+        <div class="col-2 add-div bg-dark">
             <i class="fas fa-plus"></i> Adicionar Bloco
         </div>
     </a>
-    <form method="GET" id="search-form">
-        <input class="form-control" type="text" id="search" name="search"
-           placeholder="Digite o nome da nota" value="{{ request.GET.search}}">
-        <i class="fas fa-search" id="search-btn"></i>
-     </form>
+    <form method="GET" id="search-form" class="card card-sm">
+        <div class="card-body row no-gutters align-items-center">
+            <div class="col">
+                <input class="form-control form-control-lg form-control-borderless" type="text" id="search" name="search"
+                placeholder="Digite o nome da tarefa para buscar" value="{{ request.GET.search}}">
+            </div>
+            <div class="col-auto">
+                <button  class="btn btn-dark active" type="submit"><i class="fas fa-search h4" id="search-btn" value="{{ request.GET.search}}"></i></button>
+            </div>
+        </div>
+      </form>
     <div>
-            <ul class="conteudo-lista">
-                {% for conteudo in conteudos %}
-                {% if conteudo.done == 'doing' %}
-                    <li class="conteudo-item">
-                {% else %}
-                    <li class="conteudo-item done">
-                {% endif %}
-                    <a href="delete/{{conteudo.id}}" class="delete-btn"><span><i class="fas fa-trash"></i></span></a>
-                    <a href="edit/{{conteudo.id}}"><span><i class="fas fa-edit"></i></span></a>
-                    <h4 class="titulo-centralizado"><a href="/conteudo/{{ conteudo.id }}">{{ conteudo.titulo }}</a></h4><br>
-                    <pre class="cor">{{ conteudo.descricao }}</pre>
-                </li>
-                {% endfor %}
-            </ul>
+        {% for conteudo in conteudos %}
+        <div class="card-group">
+        <div class="card bg-light mb-3">
+            <div class="card-body">
+                <a href="delete/{{conteudo.id}}" class="delete-btn"><span><i class="fas fa-trash"></i></span></a>
+                <a href="edit/{{conteudo.id}}"><span><i class="fas fa-edit"></i></span></a>
+                <h5 class="card-title"><a href="/conteudo/{{ conteudo.id }}" class="card-title">{{ conteudo.titulo }}</a></h5>
+                <p class="card-text"> <pre class="pre" class="card-text">{{ conteudo.descricao }}</pre></p>
+            </div>
+        </div>
+        </div>
+        {% endfor %}
     </div>
 </div>
-    <div class="pagination">
-        <span class="step-links">
-          {% if conteudos.has_previous %} 
-                         <a href="?page={{ conteudos.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
-          {% endif %}
-                     
-           <span class="current"> 
-                         {{ conteudos.number }} de {{ conteudos.paginator.num_pages }}
-           </span>
-     
-           {% if conteudos.has_next %}
-                <a href="?page={{ conteudos.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
-           {% endif %}
-        </span>
-     </div>
+<div class="pagination ">
+    <ul class="pagination pagination-lg">
+        {% for pagina in conteudos.paginator.page_range %}
+          {% if conteudos.number == pagina %}
+            <li class="page-item active"><a class="page-link bg-dark" href="?page={{ pagina }}&termo={{ request.GET.termo }}">{{ pagina }}</a></li>
+          {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{ pagina }}&termo={{ request.GET.termo }}">{{ pagina }}</a></li>
+          {%endif%}
+        {% endfor %}
+      </ul>
+</div>
 </div>
 {% endblock %}
-
-

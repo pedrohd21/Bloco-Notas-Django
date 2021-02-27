@@ -1,0 +1,17 @@
+<form method="GET" id="search-form" class="card card-sm">
+  <div class="card-body row no-gutters align-items-center">
+      <div class="col">
+          <input class="form-control form-control-lg form-control-borderless" type="text" id="search" name="search"
+          placeholder="Digite o nome da tarefa para buscar" value="{{ request.GET.search}}">
+      </div>
+      <div class="col-auto">
+          <button class="btn btn-lg btn-success" type="submit"><i class="fas fa-search h4 text-body" id="search-btn" value="{{ request.GET.search}}"></i></button>
+      </div>
+  </div>
+</form>
+
+<form method="GET" id="search-form" class="form-inline">
+  <input class="form-control mr-sm-2"  type="text" id="search" name="search"
+  placeholder="Digite o nome da tarefa para buscar" value="{{ request.GET.search}}">
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search" id="search-btn" value="{{ request.GET.search}}"></i></button>
+</form>

@@ -13,8 +13,7 @@ from django.contrib.auth.decorators import login_required
 def conteudoLista(request):
     search = request.GET.get('search')
     if search:
-        conteudos = Conteudo.objects.filter(titulo=search, user=request.user)
-
+        conteudos = Conteudo.objects.filter(titulo__icontains=search, user=request.user)
     else:
         conteudos_lista = Conteudo.objects.all().order_by('-data_criacao').filter(user=request.user)
         paginator = Paginator(conteudos_lista, 10)
