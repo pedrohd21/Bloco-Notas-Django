@@ -14,6 +14,7 @@ def conteudoLista(request):
     search = request.GET.get('search')
     if search:
         conteudos = Conteudo.objects.filter(titulo=search, user=request.user)
+
     else:
         conteudos_lista = Conteudo.objects.all().order_by('-data_criacao').filter(user=request.user)
         paginator = Paginator(conteudos_lista, 10)
@@ -73,3 +74,13 @@ def deleteBloco(request, id):
     return redirect('/')
 
 
+def blocoStatus(request):
+    conteudo = get_object_or_404(Conteudo, pk=id)
+
+    if conteudo.done == 'doing':
+        conteudo.done = 'done'
+    else:
+        conteudo.done = 'doing'
+    
+    conteudo.save()
+    return redirect('/')

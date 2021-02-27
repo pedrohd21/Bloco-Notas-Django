@@ -13,19 +13,23 @@
            placeholder="Digite o nome da nota" value="{{ request.GET.search}}">
         <i class="fas fa-search" id="search-btn"></i>
      </form>
-    <ul class="conteudo-lista">
-        {% for conteudo in conteudos %}
-        <div class="bloco-conteudo">
-            <li class="conteudo-item">
-                
-                <a href="delete/{{conteudo.id}}"><span><i class="fas fa-trash"></i></span></a>
-                <a href="edit/{{conteudo.id}}"><span><i class="fas fa-edit"></i></span></a>
-                <h4 class="titulo-centralizado"><a href="/conteudo/{{ conteudo.id }}">{{ conteudo.titulo }}</a></h4><br>
-                <pre class="cor">{{ conteudo.descricao }}</pre>
-            </li>
-        </div>
-        {% endfor %}
-    </ul>
+    <div>
+            <ul class="conteudo-lista">
+                {% for conteudo in conteudos %}
+                {% if conteudo.done == 'doing' %}
+                    <li class="conteudo-item">
+                {% else %}
+                    <li class="conteudo-item done">
+                {% endif %}
+                    <a href="delete/{{conteudo.id}}" class="delete-btn"><span><i class="fas fa-trash"></i></span></a>
+                    <a href="edit/{{conteudo.id}}"><span><i class="fas fa-edit"></i></span></a>
+                    <h4 class="titulo-centralizado"><a href="/conteudo/{{ conteudo.id }}">{{ conteudo.titulo }}</a></h4><br>
+                    <pre class="cor">{{ conteudo.descricao }}</pre>
+                </li>
+                {% endfor %}
+            </ul>
+    </div>
+</div>
     <div class="pagination">
         <span class="step-links">
           {% if conteudos.has_previous %} 
