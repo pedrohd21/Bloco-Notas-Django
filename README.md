@@ -1,11 +1,12 @@
 # Bloco-Notas
 ### Projeto criado com Python/Django, Html/Bootstrap e banco de dados sql lite3.
+### Um Bloco de notas, onde pode adicionar, editar e apagar os blocos.
 ## Login
 ![Login](./conteudo/static/img/Capture1.JPG)
 ## Dashboard
 ``` Onde o Fica a pre visualização do bloco. ```
 ![Dashboard](./conteudo/static/img/Capture2.PNG)
-## Criação de uma novo Bloco
+## Criação de um novo Bloco
 ![New Bloco](./conteudo/static/img/Capture3.PNG)
 ## Edição do Bloco de notas
 ![Edit Bloco](./conteudo/static/img/Capture4.PNG)
