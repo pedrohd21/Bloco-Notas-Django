@@ -1,4 +1,5 @@
 # Bloco-Notas
+### Projeto criado com Python/Django, Html/Bootstrap e banco de dados sql lite3.
 ## Login
 ![Login](./conteudo/static/img/Capture1.JPG)
 ## Dashboard
